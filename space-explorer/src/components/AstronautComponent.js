@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 const AstronautContainer = styled.div`
-  background-color: #ff08;
+  background-color: #BAB86C;
   padding: 20px;
   margin: 20px;
   border-radius: 8px;

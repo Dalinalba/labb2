@@ -20,6 +20,9 @@ const HeaderComponent = () => {
           <li>
             <Link to="/space-image">Space Image</Link>
           </li>
+          <li>
+            <Link to="/space-fact">Space Fact</Link>
+          </li>
           {/* Add links to other components as needed */}
         </ul>
       </nav>
