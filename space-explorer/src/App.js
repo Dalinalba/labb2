@@ -8,6 +8,7 @@ import ThemeSwitcher from './components/ThemeSwitcher';
 import AstronautComponent from './components/AstronautComponent';
 import SpaceImageComponent from './components/SpaceImageComponent';
 import SpaceFactComponent from './components/SpaceFactComponent';
+import GlobalStyles from './components/GlobalStyles';
 import { ThemeProvider } from 'styled-components';
 
 export const ThemeContext = createContext();
@@ -20,8 +21,9 @@ const App = () => {
       <ThemeContext.Provider value={{ theme, setTheme }}>
         <Router>
           <div>
+          <GlobalStyles />
             <HeaderComponent />
-            <Routes> {/* Change from Switch to Routes */}
+            <Routes> 
               <Route path="/planets" element={<PlanetList />} />
               <Route path="/astronauts" element={<AstronautComponent />} />
               <Route path="/space-image" element={<SpaceImageComponent />} />

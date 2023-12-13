@@ -17,6 +17,9 @@ const HeaderComponent = () => {
           <li>
             <Link to="/astronauts">Astronauts</Link>
           </li>
+          <li>
+            <Link to="/space-image">Space Image</Link>
+          </li>
           {/* Add links to other components as needed */}
         </ul>
       </nav>
