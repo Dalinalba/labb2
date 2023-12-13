@@ -1,9 +1,13 @@
 // src/App.js
 import React, { createContext, useState } from 'react';
-import HeaderComponent from './components/headerComponent';
-import PlanetList from './components/planetList';
-import CountdownTimer from './components/countdownTimer';
-import ThemeSwitcher from './components/themeSwitcher';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Update import
+import HeaderComponent from './components/HeaderComponent';
+import PlanetList from './components/PlanetList';
+import CountdownTimer from './components/CountdownTimer';
+import ThemeSwitcher from './components/ThemeSwitcher';
+import AstronautComponent from './components/AstronautComponent';
+import SpaceImageComponent from './components/SpaceImageComponent';
+import SpaceFactComponent from './components/SpaceFactComponent';
 import { ThemeProvider } from 'styled-components';
 
 export const ThemeContext = createContext();
@@ -14,13 +18,19 @@ const App = () => {
   return (
     <ThemeProvider theme={{ mode: theme }}>
       <ThemeContext.Provider value={{ theme, setTheme }}>
-        <div>
-          <HeaderComponent />
-          <PlanetList />
-          <CountdownTimer />
-          <ThemeSwitcher />
-          {/* Add other components here */}
-        </div>
+        <Router>
+          <div>
+            <HeaderComponent />
+            <Routes> {/* Change from Switch to Routes */}
+              <Route path="/planets" element={<PlanetList />} />
+              <Route path="/astronauts" element={<AstronautComponent />} />
+              <Route path="/space-image" element={<SpaceImageComponent />} />
+              <Route path="/space-fact" element={<SpaceFactComponent />} />
+              <Route path="/" element={<CountdownTimer />} />
+            </Routes>
+            <ThemeSwitcher />
+          </div>
+        </Router>
       </ThemeContext.Provider>
     </ThemeProvider>
   );
