@@ -2,8 +2,9 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
+
 const SpaceFactContainer = styled.div`
-  background-color: #BAB86C;
+  background-color: #C9C0BB;
   padding: 20px;
   margin: 20px;
   border-radius: 8px;
@@ -31,7 +32,7 @@ const Select = styled.select`
 `;
 
 const DetailsContainer = styled.div`
-  background-color: #FBE7A1;
+  background-color: #DBE9FA;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);

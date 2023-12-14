@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import PlanetDetails from './PlanetDetails';
+
 
 const fetchPlanetsApi = async () => {
   try {
@@ -16,7 +16,7 @@ const fetchPlanetsApi = async () => {
 };
 
 const PlanetContainer = styled.div`
-  background-color: #BAB86C;
+  background-color: #C9C0BB;
   padding: 20px;
   margin: 20px;
   border-radius: 8px;
@@ -35,7 +35,7 @@ const PlanetListContainer = styled.ul`
 `;
 
 const PlanetItem = styled.li`
-  background-color: #FBE7A1;
+  background-color: #DBE9FA;
   padding: 10px;
   margin-bottom: 10px;
   border-radius: 4px;

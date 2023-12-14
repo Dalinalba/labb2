@@ -36,9 +36,11 @@ const SpaceImageComponent = () => {
 
   return (
     <ImageContainer>
-      <h2>Space Image</h2>
+      <h2>Astronomy Picture of the Day</h2>
+      <h3>Each day a different image or photograph of our fascinating universe is featured, along with a brief explanation written by a professional astronomer.</h3>
+      <h4>{explanation}</h4>
       <SpaceImage src={image} alt="Space" />
-      <h3>{explanation}</h3>
+
     </ImageContainer>
   );
 };

@@ -1,6 +1,8 @@
 // src/components/ThemeSwitcher.js
 import React, { useContext } from 'react';
 import { ThemeContext } from '../App';
+import StyledButton from './StyledButton'; // Import the StyledButton component
+
 
 const ThemeSwitcher = () => {
   const { theme, setTheme } = useContext(ThemeContext);
@@ -11,7 +13,9 @@ const ThemeSwitcher = () => {
 
   return (
     <div>
-      <button onClick={toggleTheme}>Toggle Theme</button>
+      <StyledButton primary onClick={toggleTheme}>
+        Toggle Theme
+      </StyledButton>
     </div>
   );
 };
