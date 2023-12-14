@@ -19,18 +19,18 @@ const App = () => {
   return (
     <ThemeProvider theme={{ mode: theme }}>
       <ThemeContext.Provider value={{ theme, setTheme }}>
+      <ThemeSwitcher />
         <Router>
           <div>
           <GlobalStyles />
             <HeaderComponent />
-            <Routes> 
+            <Routes>
               <Route path="/planets" element={<PlanetList />} />
               <Route path="/astronauts" element={<AstronautComponent />} />
               <Route path="/space-image" element={<SpaceImageComponent />} />
               <Route path="/space-fact" element={<SpaceFactComponent />} />
               <Route path="/" element={<CountdownTimer />} />
             </Routes>
-            <ThemeSwitcher />
           </div>
         </Router>
       </ThemeContext.Provider>
