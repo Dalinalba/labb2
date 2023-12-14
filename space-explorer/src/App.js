@@ -10,6 +10,7 @@ import SpaceImageComponent from './components/SpaceImageComponent';
 import SpaceFactComponent from './components/SpaceFactComponent';
 import GlobalStyles from './components/GlobalStyles';
 import { ThemeProvider } from 'styled-components';
+import PlanetDetails from './components/PlanetDetails';
 
 export const ThemeContext = createContext();
 
@@ -26,6 +27,7 @@ const App = () => {
             <HeaderComponent />
             <Routes>
               <Route path="/planets" element={<PlanetList />} />
+              <Route path="/planet/:planetId" element={<PlanetDetails/>} />
               <Route path="/astronauts" element={<AstronautComponent />} />
               <Route path="/space-image" element={<SpaceImageComponent />} />
               <Route path="/space-fact" element={<SpaceFactComponent />} />

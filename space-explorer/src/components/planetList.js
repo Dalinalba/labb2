@@ -1,6 +1,19 @@
 // src/components/PlanetList.js
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import PlanetDetails from './PlanetDetails';
+
+const fetchPlanetsApi = async () => {
+  try {
+    const response = await fetch('https://api.le-systeme-solaire.net/rest/bodies/');
+    const planetData = await response.json();
+    return planetData.bodies;
+  } catch (error) {
+    console.error('Error fetching planets:', error);
+    return [];
+  }
+};
 
 const PlanetContainer = styled.div`
   background-color: #BAB86C;
@@ -11,7 +24,7 @@ const PlanetContainer = styled.div`
 `;
 
 const PlanetTitle = styled.h2`
-  color: #33;
+  color: #333;
   text-align: center;
   margin-bottom: 20px;
 `;
@@ -35,29 +48,35 @@ const PlanetItem = styled.li`
 
 const PlanetList = () => {
   const [planets, setPlanets] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const fetchPlanets = useCallback(async () => {
+    const planetData = await fetchPlanetsApi();
+    setPlanets(planetData);
+    setLoading(false);
+  }, []);
 
   useEffect(() => {
-    const fetchPlanets = async () => {
-      try {
-        const response = await fetch('https://api.le-systeme-solaire.net/rest/bodies/');
-        const planetData = await response.json();
-        setPlanets(planetData.bodies);
-      } catch (error) {
-        console.error('Error fetching planets:', error);
-      }
-    };
-
     fetchPlanets();
-  }, []);
+  }, [fetchPlanets]);
+
+  // Memoize the list of planets
+  const memoizedPlanets = useMemo(() => planets, [planets]);
 
   return (
     <PlanetContainer>
       <PlanetTitle>Planets</PlanetTitle>
-      <PlanetListContainer>
-        {planets.map((planet) => (
-          <PlanetItem key={planet.id}>{planet.englishName}</PlanetItem>
-        ))}
-      </PlanetListContainer>
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <PlanetListContainer>
+          {memoizedPlanets.map((planet) => (
+            <PlanetItem key={planet.id}>
+              <Link to={`/planet/${planet.id}`}>{planet.englishName}</Link>
+            </PlanetItem>
+          ))}
+        </PlanetListContainer>
+      )}
     </PlanetContainer>
   );
 };
