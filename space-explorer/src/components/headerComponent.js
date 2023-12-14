@@ -8,6 +8,7 @@ const StyledHeader = styled.header`
   color: ${(props) => (props.theme.mode === 'light' ? '#000' : '#fff')};
   padding: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center; /* Center the content horizontally */
 `;
 
 const Nav = styled.nav`
@@ -35,10 +36,15 @@ const Nav = styled.nav`
   }
 `;
 
+const HeaderTitle = styled.h1`
+  color: inherit; /* Use the same color as the header */
+  font-size: 24px; /* Adjust the font size as needed */
+`;
+
 const HeaderComponent = () => {
   return (
     <StyledHeader>
-      <h1>Space Explorer</h1>
+      <HeaderTitle>Space Explorer</HeaderTitle>
       <Nav>
         <ul>
           <li>
